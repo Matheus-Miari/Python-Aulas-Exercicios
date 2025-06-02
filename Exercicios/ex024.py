@@ -2,5 +2,5 @@
 # E DIZER SE COMECA OU NAO COM SANTO
 # #
 
-cidade = str(input('Digite o nome da sua cidade: '))
-print(cidade.find('Santo'))
+cidade = str(input('Digite o nome da sua cidade: ')).strip()
+print(cidade[:5].upper() == 'SANTO')
