@@ -10,8 +10,8 @@ option = int(input('Deseja converter para qual base numerica: \n 1 - Binario \n 
 if option == 1:
     print(f'Binario: {bin(num)[2:]}')
 elif option == 2:
-    print(f'Octal: {oct(num)}')
+    print(f'Octal: {oct(num)[2:]}')
 elif option == 3:
-    print(f'Hexadecimal: {hex(num)}')
+    print(f'Hexadecimal: {hex(num)[2:]}')
 else:
     print('Perdeu a chance')
