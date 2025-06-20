@@ -1,14 +1,13 @@
 #TABUDA DE VARIOS NUMEROS
 # UM DE CADA VEZ, PARA CADA VALOR, DIGITADO
 # INTERROMPE SE FOR NEGATIVO
-from time import sleep
 
-print('--Tabuada--')
-
-n = int(input('Digite um num: '))
-cont = 0
-
-while cont <= 10:
-    print(f'{n} x {cont} = {n * cont}')
-    cont += 1
-    sleep(0.2)
+while True:
+    numero = int(input('Digite um número para ver a tabuada (negativo para sair): '))
+    if numero < 0:
+        break
+    print('-' * 30)
+    for i in range(1, 11):
+        print(f'{numero} x {i} = {numero * i}')
+    print('-' * 30)
+print('Programa encerrado. Obrigado!')

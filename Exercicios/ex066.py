@@ -2,13 +2,14 @@
 # ineteiros, para quando digitr 999,
 # quantos numeros foram digitados, e soma entre eles#
 
-
+contador = 0
 soma = 0
-cont = 0
+
 while True:
-        n = int(input('Digite um num: '))
-        if n == 999:
-            break
-        soma += n
-        cont += 1
-print(f'Som: {soma} \nContagem: {cont}')
+    numero = int(input('Digite um número (999 para parar): '))
+    if numero == 999:
+        break
+    soma += numero
+    contador += 1
+
+print(f'Você digitou {contador} números e a soma entre eles é {soma}.')

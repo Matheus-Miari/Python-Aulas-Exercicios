@@ -5,24 +5,31 @@
 
 import random
 
-contador_de_vitoria = 0
+vitorias = 0
+
+print('=== JOGO DO PAR OU ÍMPAR ===')
 
 while True:
-    jogador = int(input('Digite um numero: '))
-    escolha = input('Par ou Impar: ').strip().upper()
+    jogador = int(input('Digite um valor: '))
+    escolha = ' '
+    while escolha not in 'PI':
+        escolha = input('Par ou Ímpar? [P/I] ').strip().upper()
 
-    while escolha not in ['P', 'I']:
-        escolha = input('Escolha inválida. Par ou Ímpar? [P/I]: ').strip().upper()
+    pc = random.randint(0, 10)
+    total = jogador + pc
 
-    pc_num = random.randint(0,10)
-    soma = jogador + pc_num
+    print(f'Você jogou {jogador} e o computador {pc}. Total de {total}.')
 
-    print(f'Você jogou {jogador} e o computador jogou {pc_num}. Total: {soma}.')
-
-    if (soma % 2 == 0 and escolha == 'P') or (soma % 2 != 0 and escolha == 'I'):
-        print('Vc venceu, vamos dnv: \n')
-        contador_de_vitoria += 1
+    if total % 2 == 0:
+        resultado = 'P'
     else:
-        print('Vc perdeu mané..')
+        resultado = 'I'
+
+    if escolha == resultado:
+        print('Você VENCEU!\nVamos jogar novamente...')
+        vitorias += 1
+    else:
+        print('Você PERDEU!')
         break
-print(f'Jogo encerrado. Vc venceu {contador_de_vitoria} vezes consecutivas')
+
+print(f'GAME OVER! Você venceu {vitorias} vez(es) consecutivas.')

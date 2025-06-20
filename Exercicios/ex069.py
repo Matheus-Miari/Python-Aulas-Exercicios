@@ -6,27 +6,35 @@
 # quantos homenes
 # quantas mulheres tem menos de 20#
 
-
-n_pessoas = 0
-sex_pessoas = 0
-qtdMaiores = 0
-quantosHomens = 0
-mulheresMenosVinte = 0
-
-print('--FICHA DE CADASTRO--')
+maior18 = 0
+total_homens = 0
+mulheres_menos20 = 0
 
 while True:
-    nome_pessoa = str(input('Nome: '))
-    sexo_pessoa = str(input('Sexo: ')).strip().upper()
-    idade_pessoa = int(input('Idade: '))
-    n_pessoas += 1
-    if idade_pessoa > 18:
-        qtdMaiores += 1
-    if sexo_pessoa == 'M':
-        quantosHomens += 1
-    if sex_pessoas == 'F' and idade_pessoa < 20:
-        mulheresMenosVinte += 1
-    continuar = str(input('Deseja continuar: ')).strip().upper()
-    if continuar != 'S':
+    print('-' * 30)
+    print('CADASTRE UMA PESSOA')
+    print('-' * 30)
+
+    idade = int(input('Idade: '))
+    sexo = ' '
+    while sexo not in 'MF':
+        sexo = input('Sexo: [M/F] ').strip().upper()
+
+    if idade > 18:
+        maior18 += 1
+    if sexo == 'M':
+        total_homens += 1
+    if sexo == 'F' and idade < 20:
+        mulheres_menos20 += 1
+
+    continuar = ' '
+    while continuar not in 'SN':
+        continuar = input('Quer continuar? [S/N] ').strip().upper()
+    if continuar == 'N':
         break
-print(f'Resultados finais Pessoas +18: {qtdMaiores} \n Homens: {quantosHomens} \n Mulheres menos 20: {mulheresMenosVinte}')
+
+print('-' * 30)
+print(f'Total de pessoas com mais de 18 anos: {maior18}')
+print(f'Ao todo temos {total_homens} homem(ns) cadastrados.')
+print(f'E temos {mulheres_menos20} mulher(es) com menos de 20 anos.')
+print('FIM DO PROGRAMA')
