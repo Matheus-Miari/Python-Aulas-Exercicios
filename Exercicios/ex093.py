@@ -22,11 +22,9 @@ while True:
     jogador['gols'] = gols # add a lista de gols no dicionario
     jogador['total'] = sum(gols) # add o total de gols no dicionairo
     jogadores.append(jogador.copy())  # copia o jogador sem sobrescrever
-
     resp = input('Quer continuar: ').upper()
     if resp == 'N':
         break
-
 for i, jogador in enumerate(jogadores):  # para posicao, jogador em enumerate jogadores
     print(f'Jogador {i + 1}:')  # posicao i + 1
     print(f'  Nome: {jogador["nome"]}')  # printa o nome do jogador

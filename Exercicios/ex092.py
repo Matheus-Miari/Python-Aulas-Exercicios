@@ -6,13 +6,9 @@
 # a pessoa vai se aposentar
 # saida: nome, ano, ctps, ano de contratacao, salario
 # aposentadoria 35 anos de contribuicao #
-
-
 lista = []
-
 from datetime import date
 ano_atual = date.today().year
-
 while True:
     func = {}
     func['nome'] = str(input('Nome: '))
@@ -29,13 +25,10 @@ while True:
         func['anoContratacao'] = ano_atual
         func['anoAposenta'] = func['anoContratacao'] + 35
         func['idadeAposenta'] = func['anoAposenta'] - func['anodenasc']
-
     lista.append(func.copy())
-
     resp = str(input('Quer continuar [S/N]? ')).upper()
     if resp == 'N':
         break
-
 print('CADASTRO: ')
 for pessoa in lista:
     print('-'*30)

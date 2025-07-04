@@ -1,40 +1,51 @@
-# melhorar o 93
-# varios jogadores
-# #
+jogadores = []
 
-# gerenciar um aproveitamento de um jogador de futebol
-# o programa vai ler o nome do jogador
-# quantas partidas ele jogou
-# depois vai ler a quantidade de gols
-# feitos em cada partida
-# no final tudo isso sera guardao em um dicionario
-# incluido o total de gols feitos
-# saida = nome, qtd partidas, quantos gols em cada partida
-# #
-
-jogadores = [] # inicia a lista de jogadores
-qtd_Partidas = 0 # quantidade de partidas
+# Coleta de dados dos jogadores
 while True:
-    # enquanto verdade
-    jogador = {}  # inicia o dicionario
-    jogador['nome'] = str(input('Nome: '))
-    jogador['qtdPartidas'] = int(input('Quantas partidas: '))
-    qtd_Partidas = jogador['qtdPartidas']
-    gols = [] # inicia a lista de gols
-    for c in range(qtd_Partidas):  # para c em qtd de paritdas, para pedir quantos gols por partida
-        gols.append(int(input(f'Gols na {c+1} partida: ')))   # gols add na lista em ordem
-    jogador['gols'] = gols # add a lista de gols no dicionario
-    jogador['total'] = sum(gols) # add o total de gols no dicionairo
-    jogadores.append(jogador.copy())  # copia o jogador sem sobrescrever
+    jogador = {}
+    jogador['nome'] = input('Nome do jogador: ').strip()
+    qtd_partidas = int(input(f'Quantas partidas {jogador["nome"]} jogou? '))
 
-    resp = input('Quer continuar: ').upper()
+    gols = []
+    for partida in range(qtd_partidas):
+        gols.append(int(input(f'  Quantos gols na partida {partida + 1}? ')))
+
+    jogador['gols'] = gols
+    jogador['total'] = sum(gols)
+    jogadores.append(jogador.copy())
+
+    while True:
+        resp = input('Deseja adicionar outro jogador? [S/N] ').strip().upper()
+        if resp in ['S', 'N']:
+            break
+        print('Resposta inválida! Digite apenas S ou N.')
+
     if resp == 'N':
         break
 
-for i, jogador in enumerate(jogadores):  # para posicao, jogador em enumerate jogadores
-    print(f'Jogador {i + 1}:')  # posicao i + 1
-    print(f'  Nome: {jogador["nome"]}')  # printa o nome do jogador
-    for i_partida, gol in enumerate(jogador['gols']):  # cada prtida no dicionario na lista gols
-        print(f'    Partida {i_partida + 1}: {gol} gol(s)')
-    print(f'  Total de gols: {jogador["total"]}')
-    print('-' * 10)
+# Mostrando um resumo geral dos jogadores
+print('\n--- TABELA DE JOGADORES ---')
+print(f'{"Cod":<4} {"Nome":<15} {"Gols":<20} {"Total":<5}')
+print('-' * 50)
+for idx, jogador in enumerate(jogadores):
+    print(f'{idx:<4} {jogador["nome"]:<15} {str(jogador["gols"]):<20} {jogador["total"]:<5}')
+print('-' * 50)
+
+# Consulta de dados individuais
+while True:
+    busca = input('\nMostrar dados de qual jogador? (Digite o código ou "999" para sair): ')
+    if not busca.isdigit():
+        print('Por favor, digite um número válido.')
+        continue
+
+    busca = int(busca)
+    if busca == 999:
+        print('Finalizando...')
+        break
+    elif 0 <= busca < len(jogadores):
+        jogador = jogadores[busca]
+        print(f'-- LEVANTAMENTO DO JOGADOR {jogador["nome"]}:')
+        for i, g in enumerate(jogador['gols']):
+            print(f'   No jogo {i + 1} fez {g} gol(s)')
+    else:
+        print(f'Código inválido. Digite um número entre 0 e {len(jogadores) - 1} ou 999 para sair.')
